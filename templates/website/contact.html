@@ -1,0 +1,103 @@
+{% extends "website/base.html" %}
+<!-- contact.html -->
+{% block title %}
+<title>Contact</title>
+{% endblock %} {% block content %}
+<section class="py-5">
+  <div class="container">
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %}
+    <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %} {% endif %} {% endwith %}
+    <div class="row align-items-top">
+      <!-- Contact Information -->
+      <div class="col-lg-6 text-center mb-4 mb-lg-0">
+        <h1 class="fw-light">Contact</h1>
+        <p class="lead">
+          We're excited to hear from you! Whether you have a question, feedback,
+          or just want to say hello, feel free to reach out. Our team is
+          dedicated to responding promptly and efficiently to all inquiries.
+        </p>
+      </div>
+
+      <!-- Vertical Divider -->
+      <div class="d-none d-lg-block col-lg-1">
+        <div class="vr" style="height: 100%"></div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="col-lg-5">
+        <form
+          class="row g-3"
+          novalidate
+          action="{{ url_for('contact')}}"
+          method="POST"
+        >
+          <div class="col-md-6">
+            <label for="firstName" class="form-label">First name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstName"
+              name="firstName"
+              required
+            />
+            <div class="invalid-feedback">Please enter your first name.</div>
+          </div>
+          <div class="col-md-6">
+            <label for="lastName" class="form-label">Last name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastName"
+              name="lastName"
+              required
+            />
+            <div class="invalid-feedback">Please enter your last name.</div>
+          </div>
+          <div class="col-12">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              required
+              name="email"
+            />
+            <div class="invalid-feedback">
+              Please provide a valid email address.
+            </div>
+          </div>
+          <div class="col-12">
+            <label for="subject" class="form-label">Subject</label>
+            <input
+              type="text"
+              class="form-control"
+              id="subject"
+              required
+              name="subject"
+            />
+            <div class="invalid-feedback">Please enter a subject.</div>
+          </div>
+
+          <div class="col-12">
+            <label for="message" class="form-label">Message</label>
+            <textarea
+              class="form-control"
+              id="message"
+              required
+              rows="4"
+              name="message"
+            ></textarea>
+            <div class="invalid-feedback">Please enter a message.</div>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

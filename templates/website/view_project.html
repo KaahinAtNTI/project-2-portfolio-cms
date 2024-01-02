@@ -1,0 +1,30 @@
+{% extends "website/base.html" %}
+<!-- view_project.html -->
+{% block title %}
+<title>Project Details</title>
+{% endblock %} {% block content %}
+
+<div class="container py-5">
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading fw-bold lh-1">{{ project.title }}</h2>
+      <p class="lead">{{ project.description }}</p>
+    </div>
+    <div class="col-md-5">
+      <img
+        src="{{ project.image }}"
+        class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rounded"
+        width="500"
+        height="500"
+        alt="{{ project.title }}"
+      />
+    </div>
+  </div>
+  <div class="mt-4">
+    <a href="{{ url_for('display_projects') }}" class="btn btn-secondary"
+      >Back to Projects</a
+    >
+  </div>
+</div>
+
+{% endblock %}

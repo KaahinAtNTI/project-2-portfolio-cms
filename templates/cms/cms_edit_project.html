@@ -1,0 +1,73 @@
+{% extends "cms/cms.html" %}
+<!-- cms_edit_project.html -->
+{% block content %}
+
+<div class="container py-4">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="{{ url_for('cms_projects') }}">Projects</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Edit Project</li>
+    </ol>
+  </nav>
+
+  <div class="row py-3 mb-3">
+    <div class="col">
+      <h1 class="h2">Edit Project</h1>
+    </div>
+  </div>
+
+  <form
+    action="{{ url_for('edit_project', slug=slug) }}"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        value="{{ project.title }}"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea
+        class="form-control"
+        id="description"
+        name="description"
+        rows="3"
+        required
+      >
+{{ project.description }}</textarea
+      >
+    </div>
+
+    <div class="mb-3">
+      <label for="image" class="form-label">Project Image</label>
+      <div class="mb-2">
+        <img
+          src="{{ project.image }}"
+          alt="Current Image"
+          class="img-fluid"
+          style="max-width: 100%; height: auto"
+        />
+      </div>
+      <input type="file" class="form-control" id="image" name="image" />
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+      <button type="submit" class="btn btn-primary">Update Project</button>
+      <a href="{{ url_for('cms_projects') }}" class="btn btn-secondary"
+        >Back to Projects</a
+      >
+    </div>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "cms/cms.html" %}
+<!-- cms_view_message.html -->
+{% block content %}
+<div class="container py-4">
+  <!-- Breadcrumb and Return Button -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item">
+          <a href="{{ url_for('cms_inbox') }}">Inbox</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          Message Details
+        </li>
+      </ol>
+    </nav>
+    <a href="{{ url_for('cms_inbox') }}" class="btn btn-outline-secondary">
+      <i class="bi bi-arrow-left"></i> Return to Inbox
+    </a>
+  </div>
+
+  <!-- Message Card -->
+  <div class="card shadow">
+    <div class="card-header bg-light">
+      <h5 class="mb-0">{{ message.subject }}</h5>
+    </div>
+    <div class="card-body">
+      <h6 class="card-subtitle mb-2 text-muted">
+        <i class="bi bi-person-fill"></i> From: {{ message.first_name }} {{
+        message.last_name }}
+      </h6>
+      <h6 class="card-subtitle mb-2 text-muted">
+        <i class="bi bi-envelope-fill"></i> Email: {{ message.email }}
+      </h6>
+      <div class="border-top pt-3">
+        <p class="card-text">{{ message.message }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

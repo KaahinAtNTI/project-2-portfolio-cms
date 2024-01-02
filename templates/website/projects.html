@@ -1,0 +1,55 @@
+{% extends "website/base.html"%}
+<!-- projects.html -->
+{% block title %}
+<title>Projects</title>
+{% endblock %} {% block content %}
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Projects</h1>
+    </div>
+  </div>
+</section>
+
+<section class="album py-5 bg-body-tertiary">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {% for slug, project in projects.items() %}
+      <div class="col">
+        <div class="card shadow-sm">
+          <img
+            class="bd-placeholder-img card-img-top"
+            width="100%"
+            height="225"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Placeholder: Thumbnail"
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+            src="{{ project.image }}"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text">
+              {{ project.description[:120] }}{% if project.description|length >
+              100 %}...{% endif %}
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <a
+                  href="{{ url_for('show_project',  slug=slug) }}"
+                  class="btn btn-sm btn-outline-secondary"
+                >
+                  View
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}

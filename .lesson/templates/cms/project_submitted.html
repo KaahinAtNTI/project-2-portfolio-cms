@@ -1,0 +1,13 @@
+{% extends "cms/cms.html" %} {% block content %}
+<div class="container">
+  <div class="row justify-content-center mt-4">
+    <div class="col-12 col-md-8 col-lg-6 text-center">
+      <h3 class="display-4 mb-4">Project Submitted</h3>
+      <p>Your project has been successfully submitted!</p>
+      <a href="{{ url_for('project_manager') }}" class="btn btn-primary"
+        >Back to Project Manager</a
+      >
+    </div>
+  </div>
+</div>
+{% endblock %}
